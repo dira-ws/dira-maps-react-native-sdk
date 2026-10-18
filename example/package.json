@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.1",
-    "@kgtech-org/dira-maps-react-native": "file:..",
+    "@dira-ws/dira-maps-react-native": "file:..",
     "@maplibre/maplibre-react-native": "^10.4.2",
     "expo": "~52.0.0",
     "expo-asset": "~11.0.5",

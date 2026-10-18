@@ -12,7 +12,7 @@
 import { Camera, LineLayer, MapView, MarkerView, RasterLayer, RasterSource, ShapeSource } from '@maplibre/maplibre-react-native';
 import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { diraTileTemplate, toLngLat } from '@kgtech-org/dira-maps-react-native';
+import { diraTileTemplate, toLngLat } from '@dira-ws/dira-maps-react-native';
 
 import { CITY, MAPS_API_KEY, MAPS_API_URL, TOUR } from './config';
 import type { MapPaneProps } from './MapPane.types';

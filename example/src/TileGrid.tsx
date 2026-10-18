@@ -40,7 +40,7 @@ import {
   diraBasemapTemplate,
   diraTileTemplate,
   toLatLng,
-} from '@kgtech-org/dira-maps-react-native';
+} from '@dira-ws/dira-maps-react-native';
 
 import { CITY, MAPS_API_KEY, MAPS_API_URL, MAPS_SITE_URL, TOUR } from './config';
 import type { MapPaneProps } from './MapPane.types';

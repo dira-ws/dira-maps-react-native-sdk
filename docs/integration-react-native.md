@@ -30,7 +30,7 @@ qui rende le **thème** réglé dans le portail, jour et nuit. Dira Maps se pose
 l'autre, avec les mêmes appels. C'est exactement ce que fait la console d'administration Dira Food
 et le simulateur de dira-tracking.
 
-Le SDK `@kgtech-org/dira-maps-react-native` encapsule tout ça : client typé, service d'itinéraire avec
+Le SDK `@dira-ws/dira-maps-react-native` encapsule tout ça : client typé, service d'itinéraire avec
 repli **signalé**, hook React, conversion de coordonnées, gabarits d'URL. Zéro dépendance à
 l'exécution, zéro module natif, aucun `pod install`.
 
@@ -77,12 +77,12 @@ configuration.
 
 ```sh
 # .npmrc du projet (le jeton vient de l'environnement, jamais en clair)
-@kgtech-org:registry=https://npm.pkg.github.com
+@dira-ws:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 
-npm install @kgtech-org/dira-maps-react-native
+npm install @dira-ws/dira-maps-react-native
 # ou, sans jeton, en épinglant un tag (le dernier : voir CHANGELOG.md du SDK) :
-npm install github:kgtech-org/dira-maps-react-native-sdk#v0.4.7
+npm install github:dira-ws/dira-maps-react-native-sdk#v0.4.7
 ```
 
 > `apiKey`, `diraStyleUrl` et les erreurs `auth`/`quota` existent depuis **v0.3.0** ;
@@ -92,7 +92,7 @@ npm install github:kgtech-org/dira-maps-react-native-sdk#v0.4.7
 `react-native-maps` doit déjà être installé et fonctionner (une `<MapView>` vide s'affiche). Si ce
 n'est pas le cas, c'est un problème de l'app, pas de Dira Maps : le régler d'abord.
 
-**Acceptation** : `import { DiraMapsClient } from '@kgtech-org/dira-maps-react-native'` compile ;
+**Acceptation** : `import { DiraMapsClient } from '@dira-ws/dira-maps-react-native'` compile ;
 `tsc` passe.
 
 ### Tâche 2 — Un module `dira-maps.ts` unique
@@ -101,7 +101,7 @@ Un seul endroit construit le client et le service ; les écrans l'importent.
 
 ```ts
 // src/services/dira-maps.ts
-import { DiraMapsClient, RouteService } from '@kgtech-org/dira-maps-react-native';
+import { DiraMapsClient, RouteService } from '@dira-ws/dira-maps-react-native';
 
 export const MAPS_API_URL = process.env.EXPO_PUBLIC_MAPS_URL ?? 'https://maps.dira.llc/api';
 export const MAPS_SITE_URL = process.env.EXPO_PUBLIC_MAPS_SITE_URL ?? 'https://maps.dira.llc';
@@ -119,7 +119,7 @@ Le cas de référence : un livreur, une tournée (position → points de collect
 
 ```tsx
 import MapView, { Marker, Polyline, UrlTile } from 'react-native-maps';
-import { diraTileTemplate, toLatLng, useRoute } from '@kgtech-org/dira-maps-react-native';
+import { diraTileTemplate, toLatLng, useRoute } from '@dira-ws/dira-maps-react-native';
 import { diraRoutes, MAPS_API_KEY, MAPS_API_URL } from '../services/dira-maps';
 
 export function DeliveryMap({ delivery, driverPosition }) {
@@ -301,7 +301,7 @@ Le SDK a un banc d'essai en ligne de commande, le même que l'application d'exem
 le déploiement (itinéraire, cache, géocodage, tuiles, couverture, erreurs typées) sans simulateur.
 
 ```sh
-git clone https://github.com/kgtech-org/dira-maps-react-native-sdk && cd dira-maps-react-native-sdk/example
+git clone https://github.com/dira-ws/dira-maps-react-native-sdk && cd dira-maps-react-native-sdk/example
 npm install
 EXPO_PUBLIC_MAPS_URL=https://maps.dira.llc/api EXPO_PUBLIC_MAPS_API_KEY=dira_live_… npm run check
 ```
@@ -325,7 +325,7 @@ bonne et que ses services sont activés.
 
 ## Références
 
-- SDK : https://github.com/kgtech-org/dira-maps-react-native-sdk — README, `CLAUDE.md` (la règle du
+- SDK : https://github.com/dira-ws/dira-maps-react-native-sdk — README, `CLAUDE.md` (la règle du
   dépôt), `example/` (application de référence : `MapPane.tsx`, `checks.ts`).
 - API : `https://maps.dira.llc/docs` (OpenAPI).
 - Portail des applications (clés, thèmes, statistiques) : `https://maps.dira.llc/admin/`.

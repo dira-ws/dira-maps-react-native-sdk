@@ -1,7 +1,14 @@
 name: Publier le paquet (GitHub Packages)
 
-# Publie @kgtech-org/dira-maps-react-native sur npm.pkg.github.com à chaque
+# Publie @dira-ws/dira-maps-react-native sur npm.pkg.github.com à chaque
 # tag `v*`.
+#
+# ⚠️ LE SCOPE SUIT LE PROPRIÉTAIRE DU DÉPÔT, il ne s'écrit pas. Le registre npm
+# de GitHub l'impose (voir le CHANGELOG 0.3.0 : sous `@kgtech`, la publication
+# était refusée) — et un scope écrit en dur survit à un déménagement
+# d'organisation sans rien dire. C'est exactement ce qui est arrivé à l'image
+# de dira-stt : elle publiait encore dans `kgtech-org` pendant que le
+# déploiement tirait de `dira-ws`, et la publication passait au VERT.
 #
 # Le tag est le déclencheur, et non un push sur `main` : une version est une
 # décision, pas la conséquence d'un commit. Publier à chaque push brûlerait un
@@ -46,7 +53,7 @@ jobs:
           # Écrit le .npmrc qui pointe le scope vers GitHub Packages et lit
           # NODE_AUTH_TOKEN. Sans lui, `npm publish` viserait npmjs.
           registry-url: https://npm.pkg.github.com
-          scope: "@kgtech-org"
+          scope: "@${{ github.repository_owner }}"
 
       - name: Installer
         run: npm ci
@@ -88,7 +95,7 @@ jobs:
             echo "### Publié"
             echo
             echo '```sh'
-            echo "npm install @kgtech-org/dira-maps-react-native@$(node -p "require('./package.json').version")"
+            echo "npm install $(node -p "require('./package.json').name")@$(node -p "require('./package.json').version")"
             echo '```'
             echo
             echo "La lecture depuis GitHub Packages exige un jeton \`read:packages\`, même sur un dépôt public — voir le README."
