@@ -22,17 +22,18 @@ soit le **propriétaire du dépôt** — c'est la même règle qui avait forcé
 **sous `@kgtech-org`, la publication depuis un dépôt `dira-ws` est refusée.**
 Ce n'est pas un réglage, il n'y a pas de contournement.
 
-Dans une application qui l'utilise, **deux lignes** à changer — le nom de la
-dépendance et la ligne de registre du `.npmrc` :
+Dans une application qui l'utilise, la dépendance et les imports changent.
+**Les quatre applications Dira installent depuis un TAG GIT**, pas depuis le
+registre — c'est la ligne de gauche qui les concerne :
 
 ```diff
- # package.json
--"@kgtech-org/dira-maps-react-native": "^0.4.7"
-+"@dira-ws/dira-maps-react-native": "^0.5.0"
+ # package.json — installation depuis git (dira-client, dira-vtc-client, dira-merchant)
+-"@kgtech-org/dira-maps-react-native": "github:kgtech-org/dira-maps-react-native-sdk#v0.4.4"
++"@dira-ws/dira-maps-react-native": "github:dira-ws/dira-maps-react-native-sdk#v0.5.0"
 ```
 
 ```diff
- # .npmrc
+ # .npmrc — SEULEMENT si vous installez depuis GitHub Packages
 -@kgtech-org:registry=https://npm.pkg.github.com
 +@dira-ws:registry=https://npm.pkg.github.com
 ```
@@ -41,6 +42,15 @@ dépendance et la ligne de registre du `.npmrc` :
 -import { useRoute } from '@kgtech-org/dira-maps-react-native'
 +import { useRoute } from '@dira-ws/dira-maps-react-native'
 ```
+
+⚠️ **LA CLÉ ET LES IMPORTS SE CHANGENT ENSEMBLE.** Avec un spécificateur git,
+npm range le paquet dans le dossier portant la **clé**, pas le nom déclaré par
+le paquet : changer l'une sans les autres casse la résolution.
+
+⚠️ **ET NPM NE SIGNALE PAS LE DÉSACCORD** (vérifié) : une application qui pointe
+le tag `v0.5.0` en gardant la clé `@kgtech-org/…` **s'installe et compile sans
+un mot**, le paquet renommé rangé sous l'ancien dossier. Rien ne casse — et rien
+ne vous apprend que le nom a changé.
 
 ⚠️ **Les versions publiées sous l'ancien nom restent installables** et
 continueront de fonctionner : rien ne casse le jour du renommage. Mais plus
