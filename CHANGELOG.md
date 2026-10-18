@@ -6,6 +6,52 @@ s'installe depuis son dépôt (voir [README](README.md#installation)).
 Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/),
 versions selon [SemVer](https://semver.org/lang/fr/).
 
+## [0.5.0] — 2026-10-18
+
+Le paquet change de nom. **Aucune ligne de code du SDK ne change** : l'API de
+0.4.7 est celle de 0.5.0, au caractère près.
+
+### Changement de nom — action requise
+
+`@kgtech-org/dira-maps-react-native` devient **`@dira-ws/dira-maps-react-native`**.
+
+Les dépôts de la plateforme ont quitté l'organisation `kgtech-org` pour
+**`dira-ws`** le 12 octobre 2026. Le registre npm de GitHub impose que le scope
+soit le **propriétaire du dépôt** — c'est la même règle qui avait forcé
+`@kgtech` → `@kgtech-org` en 0.3.0, et elle joue maintenant dans l'autre sens :
+**sous `@kgtech-org`, la publication depuis un dépôt `dira-ws` est refusée.**
+Ce n'est pas un réglage, il n'y a pas de contournement.
+
+Dans une application qui l'utilise, **deux lignes** à changer — le nom de la
+dépendance et la ligne de registre du `.npmrc` :
+
+```diff
+ # package.json
+-"@kgtech-org/dira-maps-react-native": "^0.4.7"
++"@dira-ws/dira-maps-react-native": "^0.5.0"
+```
+
+```diff
+ # .npmrc
+-@kgtech-org:registry=https://npm.pkg.github.com
++@dira-ws:registry=https://npm.pkg.github.com
+```
+
+```diff
+-import { useRoute } from '@kgtech-org/dira-maps-react-native'
++import { useRoute } from '@dira-ws/dira-maps-react-native'
+```
+
+⚠️ **Les versions publiées sous l'ancien nom restent installables** et
+continueront de fonctionner : rien ne casse le jour du renommage. Mais plus
+aucune version n'y sera publiée — une application qui garde l'ancien nom est
+figée en 0.4.7 **sans que rien ne le signale**, exactement comme un conteneur
+qui tire une image d'un registre que personne n'alimente plus.
+
+⚠️ **Le scope ne s'écrit plus en dur** dans le workflow de publication : il
+vient de `github.repository_owner`. Un nom écrit à la main survit au
+déménagement suivant sans rien dire, et la publication passe au vert.
+
 ## [0.4.7] — 2026-09-26
 
 Rien ne change dans le paquet ; son API est celle de 0.4.0. Ce qui change est

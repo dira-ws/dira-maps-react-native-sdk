@@ -32,7 +32,7 @@
 import Constants, { ExecutionEnvironment } from 'expo-constants';
 import { Platform } from 'react-native';
 import MapView, { Marker, Polyline, UrlTile } from 'react-native-maps';
-import { diraTileTemplate, toLatLng } from '@kgtech-org/dira-maps-react-native';
+import { diraTileTemplate, toLatLng } from '@dira-ws/dira-maps-react-native';
 
 import { CITY, CITY_CENTER, ENGINE, MAPS_API_KEY, MAPS_API_URL, TOUR, type Engine } from './config';
 import type { MapPaneProps } from './MapPane.types';

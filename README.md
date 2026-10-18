@@ -1,4 +1,4 @@
-# @kgtech-org/dira-maps-react-native
+# @dira-ws/dira-maps-react-native
 
 Client React Native de **Dira Maps** : itinéraires sur le réseau routier réel, géocodage, et les primitives de carte qui manquent toujours (conversion de coordonnées, polylines encodées).
 
@@ -96,12 +96,12 @@ contrainte de GitHub Packages, pas un choix de ce paquet. Créez un
 `read:packages`, puis, dans le `.npmrc` du projet consommateur :
 
 ```ini
-@kgtech-org:registry=https://npm.pkg.github.com
+@dira-ws:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
 ```sh
-npm install @kgtech-org/dira-maps-react-native
+npm install @dira-ws/dira-maps-react-native
 ```
 
 Ne mettez pas le jeton en clair dans le `.npmrc` versionné : `${GITHUB_TOKEN}`
@@ -113,7 +113,7 @@ Utile pour un essai rapide, ou si vous ne voulez pas gérer d'authentification.
 **Épinglez un tag** :
 
 ```sh
-npm install github:kgtech-org/dira-maps-react-native-sdk#v0.4.7
+npm install github:dira-ws/dira-maps-react-native-sdk#v0.4.7
 ```
 
 Sans le `#v0.4.7`, npm suit la branche par défaut : la version installée change
@@ -132,7 +132,7 @@ Le paquet est du **CommonJS** : Metro le charge sans configuration. Il n'utilise
 ## Prise en main
 
 ```tsx
-import { DiraMapsClient, RouteService, toLatLng, useRoute } from '@kgtech-org/dira-maps-react-native'
+import { DiraMapsClient, RouteService, toLatLng, useRoute } from '@dira-ws/dira-maps-react-native'
 
 const client = new DiraMapsClient({
   baseUrl: process.env.EXPO_PUBLIC_MAPS_URL!,

@@ -18,7 +18,7 @@ import {
   toLatLng,
   toLngLat,
   tourKey,
-} from '@kgtech-org/dira-maps-react-native';
+} from '@dira-ws/dira-maps-react-native';
 
 import { CITY, CITY_CENTER, MAPS_API_KEY, MAPS_API_URL, MAPS_SITE_URL, TOUR } from './config';
 import { tileForLngLat } from './tile-math';

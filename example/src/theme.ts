@@ -16,7 +16,7 @@
  * la main ici. Changer de thème — ou passer en mode nuit —, c'est changer
  * d'URL.
  */
-import { diraStyleUrl, type ColorScheme } from '@kgtech-org/dira-maps-react-native';
+import { diraStyleUrl, type ColorScheme } from '@dira-ws/dira-maps-react-native';
 
 import { MAPS_API_KEY, MAPS_SITE_URL } from './config';
 

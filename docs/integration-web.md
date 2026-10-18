@@ -34,7 +34,7 @@ dans le portail, et il ne demande aucun compte tiers. Google Maps JavaScript API
 (fond Google, tuiles Dira en `ImageMapType`) mais coûte une clé Google facturée à la vue, et le
 thème Dira ne s'y applique pas. Leaflet marche pour les tuiles raster et n'a pas de thème.
 
-**Le SDK `@kgtech-org/dira-maps-react-native` fonctionne sur le web.** Malgré son nom, il n'a
+**Le SDK `@dira-ws/dira-maps-react-native` fonctionne sur le web.** Malgré son nom, il n'a
 aucune dépendance à React Native : du TypeScript pur, `fetch`, zéro dépendance à l'exécution
 (`react` en pair pour le seul hook `useRoute`). Le client HTTP, les erreurs typées, le service
 d'itinéraire, la conversion de coordonnées, les gabarits d'URL — tout s'importe dans une app web.
@@ -123,7 +123,7 @@ en recette et en production.
 ### Tâche 1 — Installer le SDK et un module `dira-maps.ts` unique
 
 ```sh
-npm install github:kgtech-org/dira-maps-react-native-sdk#v0.4.7   # tag : voir CHANGELOG.md du SDK
+npm install github:dira-ws/dira-maps-react-native-sdk#v0.4.7   # tag : voir CHANGELOG.md du SDK
 npm install maplibre-gl                                            # le moteur de carte
 ```
 
@@ -131,7 +131,7 @@ Un seul endroit construit le client et le service ; les écrans l'importent :
 
 ```ts
 // src/services/dira-maps.ts
-import { DiraMapsClient, RouteService } from '@kgtech-org/dira-maps-react-native';
+import { DiraMapsClient, RouteService } from '@dira-ws/dira-maps-react-native';
 
 export const MAPS_API_URL = import.meta.env.VITE_MAPS_API_URL ?? 'https://maps.dira.llc/api';
 export const MAPS_SITE_URL = import.meta.env.VITE_MAPS_SITE_URL ?? 'https://maps.dira.llc';
@@ -149,7 +149,7 @@ aucune dépendance React Native dans le bundle (vérifier `npm ls react-native` 
 ```ts
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
-import { diraStyleUrl, diraTileTemplate } from '@kgtech-org/dira-maps-react-native';
+import { diraStyleUrl, diraTileTemplate } from '@dira-ws/dira-maps-react-native';
 import { MAPS_API_KEY, MAPS_API_URL, MAPS_SITE_URL } from './services/dira-maps';
 
 type ColorScheme = 'light' | 'dark';
@@ -202,7 +202,7 @@ couleur dans le portail se voit après rechargement (cache 5 min).
 ### Tâche 3 — L'itinéraire
 
 ```ts
-import { useRoute } from '@kgtech-org/dira-maps-react-native'; // React ; sinon `diraRoutes.route(...)`
+import { useRoute } from '@dira-ws/dira-maps-react-native'; // React ; sinon `diraRoutes.route(...)`
 
 const { coordinates, approximate, loading, error } = useRoute(diraRoutes, {
   city: delivery.city,          // des données métier, jamais déduit
@@ -309,7 +309,7 @@ changement de bibliothèque, pas d'API Dira.
 Le banc d'essai du SDK tourne en ligne de commande contre n'importe quel déploiement :
 
 ```sh
-git clone https://github.com/kgtech-org/dira-maps-react-native-sdk && cd dira-maps-react-native-sdk/example
+git clone https://github.com/dira-ws/dira-maps-react-native-sdk && cd dira-maps-react-native-sdk/example
 npm install
 EXPO_PUBLIC_MAPS_URL=$VITE_MAPS_API_URL EXPO_PUBLIC_MAPS_API_KEY=$VITE_MAPS_API_KEY npm run check
 ```
@@ -334,7 +334,7 @@ sa clé — le moyen de vérifier que c'est la bonne et que ses services sont ac
 
 ## Références
 
-- SDK : https://github.com/kgtech-org/dira-maps-react-native-sdk — README, `CLAUDE.md`,
+- SDK : https://github.com/dira-ws/dira-maps-react-native-sdk — README, `CLAUDE.md`,
   `example/` (`npm run web` : le diagnostic dans un navigateur).
 - Thèmes, jour et nuit : [`integration-themes.md`](integration-themes.md).
 - API : `https://maps.dira.llc/docs` (OpenAPI).

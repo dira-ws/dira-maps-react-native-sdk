@@ -83,7 +83,7 @@ celle de jour. `404` = clé inconnue ou révoquée ; `403` = service `fond` dés
 ```ts
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { diraStyleUrl } from "@kgtech-org/dira-maps-react-native"; // fonctionne aussi sur le web
+import { diraStyleUrl } from "@dira-ws/dira-maps-react-native"; // fonctionne aussi sur le web
 // ou, sans le SDK : `${MAPS_SITE_URL}/api/styles/${MAPS_API_KEY}.json`
 
 // Jour ou nuit : l'état de VOTRE app (un bouton, un réglage). Basculer, c'est
@@ -123,7 +123,7 @@ et recharger la page (après 5 min, ou avec un cache-buster `?v=…` sur l'URL d
 ```tsx
 import { useState } from "react";
 import { MapView, RasterSource, RasterLayer, Camera } from "@maplibre/maplibre-react-native";
-import { diraStyleUrl, diraTileTemplate } from "@kgtech-org/dira-maps-react-native";
+import { diraStyleUrl, diraTileTemplate } from "@dira-ws/dira-maps-react-native";
 
 // Jour ou nuit : un état de VOTRE app — un bouton, un réglage de l'utilisateur.
 // Quand il change, l'URL change, et MapLibre recharge le style — rien à recolorer.
@@ -194,7 +194,7 @@ passée en paramètres : c'est le même constructeur, utile pour tester une pale
 
 ## Références
 
-- SDK : `diraStyleUrl`, `diraTileTemplate`, `diraBasemapTemplate` — https://github.com/kgtech-org/dira-maps-react-native-sdk
+- SDK : `diraStyleUrl`, `diraTileTemplate`, `diraBasemapTemplate` — https://github.com/dira-ws/dira-maps-react-native-sdk
 - Intégration React Native (itinéraires, tuiles, règles) : `docs/integration-react-native.md`
 - Portail : `https://maps.dira.llc/admin/` → Thèmes, Clés.
 - Style MapLibre : https://maplibre.org/maplibre-style-spec/

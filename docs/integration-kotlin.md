@@ -289,7 +289,7 @@ Le banc d'essai du SDK React Native diagnostique le **déploiement** (itinérair
 tuiles, couverture) sans simulateur — il vaut pour une app Android puisque c'est la même API :
 
 ```sh
-git clone https://github.com/kgtech-org/dira-maps-react-native-sdk && cd dira-maps-react-native-sdk/example
+git clone https://github.com/dira-ws/dira-maps-react-native-sdk && cd dira-maps-react-native-sdk/example
 npm install && EXPO_PUBLIC_MAPS_URL=https://maps.dira.llc/api EXPO_PUBLIC_MAPS_API_KEY=dira_live_… npm run check
 ```
 
@@ -309,6 +309,6 @@ le signaler.
 ## Références
 
 - Référence de comportement : le SDK React Native, `src/client.ts`, `src/route-service.ts`,
-  `src/coords.ts`, `src/errors.ts` — https://github.com/kgtech-org/dira-maps-react-native-sdk
+  `src/coords.ts`, `src/errors.ts` — https://github.com/dira-ws/dira-maps-react-native-sdk
 - API : `https://maps.dira.llc/docs` (OpenAPI).
 - Thèmes : `docs/integration-themes.md`. Portail : `https://maps.dira.llc/admin/`.

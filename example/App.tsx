@@ -14,7 +14,7 @@
 import Constants, { ExecutionEnvironment } from 'expo-constants';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View, useColorScheme } from 'react-native';
-import { DiraMapsClient, RouteService, useRoute } from '@kgtech-org/dira-maps-react-native';
+import { DiraMapsClient, RouteService, useRoute } from '@dira-ws/dira-maps-react-native';
 
 import { ENGINE_IN_USE, MapPane } from './src/MapPane';
 import { CHECKS, runCheck, type CheckResult } from './src/checks';

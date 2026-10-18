@@ -1,5 +1,5 @@
 import type { StyleProp, ViewStyle } from 'react-native';
-import type { LatLng } from '@kgtech-org/dira-maps-react-native';
+import type { LatLng } from '@dira-ws/dira-maps-react-native';
 
 import type { Palette } from './theme';
 
